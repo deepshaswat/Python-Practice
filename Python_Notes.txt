@@ -1,0 +1,230 @@
+Python Notes:
+
+looping, if-else:
+if <statement>:
+
+else:
+ #note: the block in not written inside {} but it is intended by the number of spaces for creating a clock of statements
+
+
+--------------------
+Formating the Text
+--------------------
+
+When any value is passed with the variable %s -> its like a string
+For integers -> %d
+For floating -> %f
+%r when used with string -> Output is in the single quotes
+%r when used with numbers -> takes in decimal or integer as applicable
+
+print "."*10 -> this will print . 10 times
+
+print formatter % (True, False, False, True) - > True False False True 	#As it takes it as a binary value
+
+Below code gets formated in with the next line character also -> """ .........text to display with new line character....."""
+print """
+There's something going on here.
+With the three double-quotes.
+We'll be able to type as much as we like.
+Even 4 lines if we want, or 5, or 6.
+"""
+
+--------------------
+Taking Input
+--------------------
+
+
+Input from command line is taken as a string
+Format of taking input :
+print "How old are you?",
+age = raw_input() 		#these two lines will ensure that the input is taken in the same line as the output is shown. And when comma after the print statement is not used, the input
+						 cursor goes to the nest line.
+
+A prompt can be defined while taking input from cmd line
+prompt = '>'
+age = raw_input(prompt) 	# this will take the input but the display will be > prompt while taking input
+
+
+--------------------
+Importing in Script
+--------------------
+
+from sys import argv 	#imports the arguments passed in the cmd line
+script, first, second = argv 	#Assigns the arguments into the variables -> unpacking
+
+
+--------------------
+File Operations
+--------------------
+
+#the filename can be imported from the arguments or can be read in between using raw_input()
+
+txt = open(<filename>)
+print txt.read()		#reads the complete text
+
+Creating a file from python script:
+http://pymotw.com/2/ospath/
+
+import os.path
+os.mkdir("one") 	#creates a folder in the current directory
+if os.path.exists('C:\Python27\practice\file1.txt'): #check the path of the sys and the file and folder name should start with a Capital letter
+    print "File exists"
+else:
+   f=open("name.txt", 'w')
+   f.truncate() 	#is used to empty the contents of the file
+
+Input Modes:
+Character	Meaning
+'r'	open for reading (default)
+'w'	open for writing, truncating the file first
+'a'	open for writing, appending to the end of the file if it exists
+'b'	binary mode
+'t'	text mode (default)
+'+'	open a disk file for updating (reading and writing)
+'U'	universal newline mode (for backwards compatibility; should not be used in new code)
+
+
+_________________
+HackerRank.com
+_________________
+
+
+1. from __future__ import division: use / to divide in float and // for the output to be in integer
+2. a=177, b=10: using the method divmod(177,10); output is : (17,7)
+3. power function: a,b,m pow(a,b) or a**b returns the power; pow(a,b,m) return a**b mod m
+4. in if condition of i <=10 and i>=1 can be written as: i in range (0,11); range doest work while comparing the float value
+5. for string concatenation: "," when used adds a space between two variables or a variable and a string. But "+" doesn't add any space
+6. List commands:
+append(x), extend(List), insert(i,x), remove(x), pop(), index(x), count(x), sort(), reverse()
+
+for integer, a = int(raw_input))
+for double/float, a = float(raw_input())
+
+Storing value in middle of statement: print 'The total meal cost is %d dollars.' % (round(cost))
+
+if-else:
+
+ if N >= 2 and N <= 5:
+        print "Not Weird"
+    elif N >= 6 and N <= 20:
+        print "Weird"
+else:
+<statement>
+
+for loop with multiple arguments in print statement:
+n = int(raw_input())
+for i in range (1, 11):	#the range is inclusive of the first value and second is exclusive
+    print "%d x %d = %d" % (n, i, n*i)
+
+Class definition and function definition:
+#class declaration
+class Person:
+#function declaration
+    def __init__(self,initialAge):
+        # Add some more code to run some checks on initialAge
+        if age < 0:
+            print "Age is not valid, setting age to 0."
+            self.age = 0;
+        else:
+            self.age = initialAge
+    def amIOld(self):
+        # Do some computations in here and print out the correct statement to the console
+        if self.age < 13:
+            print "You are young."
+        elif self.age >= 13 and self.age < 18:
+            print "You are a teenager."
+        else:
+            print "You are old."
+    def yearPasses(self):
+        # Increment the age of the person in here
+        self.age = self.age + 1
+
+Creating an instance of a class
+				p=Person(age)
+				calling a method of a class with the object
+				    p.amIOld()
+
+					n = int(raw_input());
+
+# Program to select even and odd characters from a string.
+for i in range(n):
+    input = raw_input()
+    l = list(input)		#convert the string into a list
+    evenS = l[::2]		#selects even no of list objects
+    oddS = l[1::2]		#selects odd no of list objects
+    s1 = "".join(evenS)	#joins the list with no spaces, using any parameter in the beginning is used to put in between 2 lists
+    s2 = "".join(oddS)
+    print s1 + " " + s2
+
+#arrays
+#!/bin/python
+
+import sys
+
+n = int(raw_input().strip())	#best way to read input.
+arr = map(int,raw_input().strip().split(' '))		#to convert a string of numbers into array of integers
+for i in arr[::-1]:					#to reverse the array. or for i in reversed(arr):
+    sys.stdout.write("%d " % i)		# used to print in the same line
+
+sys.stdout.write("\n")		# to move to the next line
+
+#Dictionary:
+import sys
+n = int(raw_input().strip())
+phoneBook = {}		# defining the dict
+for i in range(n):
+    arr = raw_input().strip().split(' ')
+    phoneBook[str(arr[0])] = int(arr[1])		#assigning the value into the dict
+# infinite input
+while True:      #for line in sys.stdin: can also be used to read the input from std input when the no of lines are not specified
+    line = raw_input()
+    if line in phoneBook:		#check if the dict keys contains the line; phoneBook.keys() can also be used
+        print "%s=%s" % (line, phoneBook[line]) #print(line + '=' + str( phoneBook[line] )) the ways to print with mutilple variables
+    else:
+        print 'Not found'
+
+
+#Best way to write the infinite input from std input:
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import sys
+n = int(raw_input().strip())
+phoneBook = {}
+for i in range(n):
+    arr = raw_input().strip().split(' ')
+    phoneBook[str(arr[0])] = int(arr[1])
+lines = sys.stdin.readlines()
+for i in lines: 	#or for i in sys.stdin : in this case the above line is not required
+    line = i.strip()
+    if line in phoneBook:
+        print "%s=%s" % (line, phoneBook[line])
+    else:
+        print 'Not found'
+
+
+#factorial:
+def __factorial__ (n):
+    if n <= 1:
+        return 1
+    else:
+        return n*__factorial__(n-1)
+
+n = int(raw_input())
+print __factorial__(n)
+
+#binary count of consecutive 1's:
+import sys
+
+n = int(raw_input().strip())
+b = bin(n)[2::]		#convert to binary
+count = 0
+m = 0
+for i in b:
+    if i == '1':
+        count += 1
+    else:
+        m = max(count, m)
+        count = 0
+print max(m, count)
+
+#Inheritance: check the Interitance.py file
+when no arguments are given, then also self as argument is provided for all the methods in a class
