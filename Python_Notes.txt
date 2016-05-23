@@ -228,3 +228,6 @@ print max(m, count)
 
 #Inheritance: check the Interitance.py file
 when no arguments are given, then also self as argument is provided for all the methods in a class
+
+Understand the list operations:
+List used to create stack and queues: StackAndQueue.py
